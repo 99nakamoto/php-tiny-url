@@ -53,6 +53,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new UserLinkForm();
+        // model is used in the form to get user input from front-end
+        $tinyurl = new Tinyurl();
+        // tinyurl is an instance of Active Record used for DB operations
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // If the model is successfully populated 
@@ -60,8 +63,14 @@ class SiteController extends Controller
             // the action will call validate() to valid data received in $model
 
             // do something meaningful here about $model ...
+            $link = $model->link;
 
-            return $this->render('say', ['say' => 'successfully shortening a url']);
+            // search if the link exists already in DB
+
+            // if not exist, generate a new short-link
+
+
+            return $this->render('say', array('say' => 'You have input the URL: ', 'link' => $link));
             // the action will render a view named entry-confirm 
         } else {
             // either the page is initially displayed or there is some validation error

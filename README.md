@@ -1,0 +1,1 @@
+This is a very simple url shortening services website written with Yii and PHP. 
